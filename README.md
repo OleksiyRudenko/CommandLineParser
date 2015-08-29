@@ -18,9 +18,9 @@ Open solution with Visual Studio and tap Play button.
 
 ## Tests
 1. Launch Windows command prompt (Menu -> Run program -> cmd.exe)
-2. Go to solution folder (cd path-to-solution-directory).
-3. Go to application executable folder (cd CommandLineParser/bin/Debug).
-4. Launch CommandLineParserTest.bat
+2. Go to solution folder (`cd path-to-solution-directory`).
+3. Go to application executable folder (`cd CommandLineParser/bin/Debug`).
+4. Launch `CommandLineParserTest.bat`
 You will see app behaviour run with various command-line arguments as well as error handling.
 
 ## Usage
@@ -30,4 +30,4 @@ CommandLineParserTest.bat is a good source of ideas for that.
 ## Author
 Oleksiy Rudenko oleksiy.rudenko@gmail.com
 
-Aug 29, 2015.
+Aug 29, 2015
