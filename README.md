@@ -10,7 +10,7 @@ Command line arguments
 * `-k key value key value...` - prints pairs of key and value; `<null>` replaces absent value
 * `-print message to print` - prints given message
 * `-ping` - beeps and prints "Pinging..." NB! No actual pinging is effected whatever it might mean except the behaviour described
-* `-d [dateFormat]` - prints current date using given format; default format is yyyy-MM-dd
+* `-d [dateFormat]` - prints current date using given format; default format is yyyy-MM-dd.
 Use `/?`, `-help` or `/help` command-line argument to get help from the application in console.
 
 ## Compilation
