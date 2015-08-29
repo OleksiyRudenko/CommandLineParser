@@ -13,7 +13,7 @@ Command line arguments
 * `-d [dateFormat]` - prints current date using given format; default format is yyyy-MM-dd
 Use `/?`, `-help` or `/help` command-line argument to get help from the application in console.
 
-## Compiltaion
+## Compilation
 Open solution with Visual Studio and tap Play button.
 
 ## Tests
