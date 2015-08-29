@@ -18,9 +18,9 @@ Use `/?`, `-help` or `/help` command-line argument to get help from the applicat
 Open solution with Visual Studio and tap Play button.
 
 ## Tests
-1. Launch Windows command prompt (Menu -> Run program -> cmd.exe)
-2. Go to solution folder (`cd path-to-solution-directory`).
-3. Go to application executable folder (`cd CommandLineParser/bin/Debug`).
+1. Copy compiled executable from `CommandLineParser/bin/Debug` to solution root directory (where `.sln` file located)
+2. Launch Windows command prompt (Menu -> Run program -> cmd.exe)
+3. Go to solution folder (`cd path-to-solution-directory`).
 4. Launch `CommandLineParserTest.bat`
 You will see app behaviour run with various command-line arguments as well as error handling.
 
