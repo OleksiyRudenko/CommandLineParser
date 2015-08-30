@@ -15,18 +15,16 @@ Command line arguments
 Use `/?`, `-help` or `/help` command-line argument to get help from the application in console.
 
 ## Compilation
-Open solution with Visual Studio and tap Play button.
+Open solution with Visual Studio and press F7 to build the application.
 
 ## Tests
-1. Copy compiled executable from `CommandLineParser/bin/Debug` to solution root directory (where `.sln` file located)
-2. Launch Windows command prompt (Menu -> Run program -> cmd.exe)
-3. Go to solution folder (`cd path-to-solution-directory`).
-4. Launch `CommandLineParserTest.bat`
+1. Open solution root folder in Explorer.
+2. Launch `CommandLineParserTest.bat`
 You will see app behaviour run with various command-line arguments as well as error handling.
 
 ## Usage
 Well, I doubt one can make any real use from this application. But, please, feel free playing around.
-CommandLineParserTest.bat is a good source of ideas for that.
+`CommandLineParserTest.bat` is a good source of ideas for that. Amend it to see how various command-line arguments affect application output.
 
 ## Author
 Oleksiy Rudenko oleksiy.rudenko@gmail.com
