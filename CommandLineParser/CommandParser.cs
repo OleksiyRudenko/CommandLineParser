@@ -16,6 +16,10 @@ namespace CommandLineParser
                 ParseArguments(defaultArguments);
             else
                 ParseArguments(args);
+            // wait for input -- one line per command
+            // -exit -- terminates the app
+
+
         }
 
         static void ParseArguments(String[] args)

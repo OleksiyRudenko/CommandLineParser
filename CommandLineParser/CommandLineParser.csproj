@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Cmd.cs" />
     <Compile Include="CmdD.cs" />
+    <Compile Include="CmdExit.cs" />
     <Compile Include="CmdK.cs" />
     <Compile Include="CmdPing.cs" />
     <Compile Include="CmdPrint.cs" />
