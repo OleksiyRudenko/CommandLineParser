@@ -29,11 +29,13 @@ For e.g. you want to implement new command, say, `-foo`.
 Add new class to the solution.
 Class name should start with `Cmd` followed by command name (excluding leading dash) with first letter capitalized.
 This class should extend abstract class Cmd and implement two methods:
+
 1. `Usage()`, which returns String containing command usage description.
 2. `ToString()`, which returns String containing arguments processing result.
 
 Example:
-```    class CmdFoo : Cmd
+```
+    class CmdFoo : Cmd
     {
         public static String Usage()
         {
