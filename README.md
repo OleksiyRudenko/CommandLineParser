@@ -33,7 +33,7 @@ This class should extend abstract class Cmd and implement two methods:
 2. `ToString()`, which returns String containing arguments processing result.
 
 Example:
-    class CmdFoo : Cmd
+```    class CmdFoo : Cmd
     {
         public static String Usage()
         {
@@ -45,6 +45,7 @@ Example:
             return (arguments.Count > 0) ? arguments.Dequeue() : ""; // or whatever you want
         }
     }
+```
 Amend `CommandLineParserTest.bat` as appropriate to test your command.
 
 ## Usage
