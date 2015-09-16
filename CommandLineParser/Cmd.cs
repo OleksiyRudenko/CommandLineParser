@@ -14,7 +14,11 @@ namespace CommandLineParser
         }
         public Cmd(Queue<String> arguments)
         {
-            arguments = this.arguments;
+            this.arguments = arguments;
+        }
+        public Cmd(String[] arguments)
+        {
+            this.arguments = new Queue<String>(arguments);
         }
         public virtual String Usage()
         {
