@@ -87,13 +87,13 @@ namespace CommandLineParser
         private static object CreateCmdInstanceFromTextName(string className, Queue<String> arguments)
         {
             if (String.IsNullOrEmpty(className))
-                throw new ArgumentNullException;
+                throw new ArgumentNullException();
             // skip leading slash or dash
             char leadingChar = className.ToCharArray()[0];
             if (leadingChar == '-' || leadingChar == '/')
                 className = className.Substring(1);
             if (String.IsNullOrEmpty(className))
-                throw new ArgumentNullException;
+                throw new ArgumentNullException();
             // capitalize first letter
             className = Char.ToUpper(className[0]) + className.Substring(1).ToLower();
             return Activator.CreateInstance(null,"Cmd"+className,arguments.ToArray());
