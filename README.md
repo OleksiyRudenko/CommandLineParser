@@ -37,11 +37,11 @@ Example:
 ```
     class CmdFoo : Cmd
     {
-        public static String Usage()
+        override public String Usage()
         {
             return "-foo argument anotherArgument yetAnother Argument";
         }
-        public String ToString()
+        override public String ToString()
         {
             // process arguments, contained in the field arguments of Queue<String> type
             return (arguments.Count > 0) ? arguments.Dequeue() : ""; // or whatever you want
