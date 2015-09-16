@@ -55,7 +55,7 @@ namespace CommandLineParser
                         HelpPrinted = true;
                     }
                     break;
-                case "-k":
+                /* case "-k":
                     CommandKeyValue(arguments);
                     break;
                 case "-d":
@@ -71,14 +71,31 @@ namespace CommandLineParser
                     Console.WriteLine("No command for given arguments, use {0} /? to see set of allowed commands",
                         System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
                         );
-                    break;
+                    break; */
                 default:
+                    // try executing any command
+                    Cmd commandObject = (Cmd) CreateCmdInstanceFromTextName(command,arguments);
+                    Console.WriteLine(commandObject);
+                    /*
                     Console.WriteLine("Command {0} is not supported, use {1} /? to see set of allowed commands", 
                         command, 
                         System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
-                        );
+                        ); */
                     break;
             }
+        }
+        private static object CreateCmdInstanceFromTextName(string className, Queue<String> arguments)
+        {
+            if (String.IsNullOrEmpty(className))
+                return null;
+            // skip leading slash or dash
+            char leadingChar = className.ToCharArray()[0];
+            if (leadingChar == '-' || leadingChar == '/')
+                className = className.Substring(1);
+            // capitalize first letter
+            className = Char.ToUpper(className[0]) + className.Substring(1).ToLower();
+
+            return Activator.CreateInstance(null,"Cmd"+className,arguments.ToArray());
         }
         static void CommandKeyValue(Queue<String> arguments)
         {

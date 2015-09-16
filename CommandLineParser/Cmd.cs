@@ -17,6 +17,6 @@ namespace CommandLineParser
 
         // abstract void Execute();
 
-        abstract static String Usage();
+        public abstract static String Usage();
     }
 }
