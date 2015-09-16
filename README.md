@@ -24,6 +24,29 @@ Open solution with Visual Studio and press F7 to build the application.
 
 You will see app behaviour run with various command-line arguments as well as error handling.
 
+## Extending Features
+For e.g. you want to implement new command, say, `-foo`.
+Add new class to the solution.
+Class name should start with `Cmd` followed by command name (excluding leading dash) with first letter capitalized.
+This class should extend abstract class Cmd and implement two methods:
+1. `Usage()`, which returns String containing command usage description.
+2. `ToString()`, which returns String containing arguments processing result.
+
+Example:
+`class CmdFoo : Cmd
+{
+	public static String Usage()
+    {
+        return "-foo argument anotherArgument yetAnother Argument";
+    }
+    public String ToString()
+    {
+        // process arguments, contained in the field arguments of Queue<String> type
+        return (arguments.Count > 0) ? arguments.Dequeue() : ""; // or whatever you want
+    }
+}`
+Amend `CommandLineParserTest.bat` as appropriate to test your command.
+
 ## Usage
 Well, I doubt one can make any real use from this application. But, please, feel free playing around.
 `CommandLineParserTest.bat` is a good source of ideas for that. Amend it to see how various command-line arguments affect application output.
