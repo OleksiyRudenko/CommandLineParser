@@ -8,11 +8,11 @@ namespace CommandLineParser
 {
     class CmdPrint : Cmd
     {
-        public static String Usage()
+        override public String Usage()
         {
             return "-print <value to print>";
         }
-        public String ToString()
+        override public String ToString()
         {
             return (arguments.Count > 0) 
                 ?

@@ -55,72 +55,48 @@ namespace CommandLineParser
                         HelpPrinted = true;
                     }
                     break;
-                /* case "-k":
-                    CommandKeyValue(arguments);
-                    break;
-                case "-d":
-                    CommandDate(arguments);
-                    break;
-                case "-ping":
-                    CommandPing(); // arguments ignored
-                    break;
-                case "-print":
-                    CommandPrint(arguments);
-                    break;
                 case "":
                     Console.WriteLine("No command for given arguments, use {0} /? to see set of allowed commands",
                         System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
                         );
-                    break; */
+                    break;
                 default:
                     // try executing any command
                     Cmd commandObject = (Cmd) CreateCmdInstanceFromTextName(command,arguments);
-                    Console.WriteLine(commandObject);
-                    /*
-                    Console.WriteLine("Command {0} is not supported, use {1} /? to see set of allowed commands", 
-                        command, 
+                    try
+                    {
+                        Console.WriteLine(commandObject);
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        Console.WriteLine("Empty command {0} passed, use {1} /? to see set of allowed commands",
+                        command,
                         System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
-                        ); */
+                        );
+                    }
+                    catch (TypeLoadException)
+                    {
+                        Console.WriteLine("Command {0} is not supported, use {1} /? to see set of allowed commands",
+                        command,
+                        System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
+                        );
+                    }
                     break;
             }
         }
         private static object CreateCmdInstanceFromTextName(string className, Queue<String> arguments)
         {
             if (String.IsNullOrEmpty(className))
-                return null;
+                throw new ArgumentNullException;
             // skip leading slash or dash
             char leadingChar = className.ToCharArray()[0];
             if (leadingChar == '-' || leadingChar == '/')
                 className = className.Substring(1);
+            if (String.IsNullOrEmpty(className))
+                throw new ArgumentNullException;
             // capitalize first letter
             className = Char.ToUpper(className[0]) + className.Substring(1).ToLower();
-
             return Activator.CreateInstance(null,"Cmd"+className,arguments.ToArray());
-        }
-        static void CommandKeyValue(Queue<String> arguments)
-        {
-            while (arguments.Count > 0)
-            {
-                String key = arguments.Dequeue();
-                String value = (arguments.Count > 0) ? arguments.Dequeue() : "<null>";
-                Console.WriteLine("{0} - {1}", key, value);
-            }
-        }
-        static void CommandPing()
-        {
-            Console.WriteLine("Pinging...");
-            Console.Beep();
-        }
-        static void CommandPrint(Queue<String> arguments)
-        {
-            if (arguments.Count > 0)
-                Console.WriteLine(String.Join(" ",arguments));
-        }
-        static void CommandDate(Queue<String> arguments)
-        {
-            String format = (arguments.Count > 0) ? arguments.Dequeue() : "yyyy-MM-dd";
-            Console.WriteLine(DateTime.Today.ToString(format));
-        }
-    
+        } 
     }
 }

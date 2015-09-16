@@ -8,11 +8,11 @@ namespace CommandLineParser
 {
     class CmdK : Cmd
     {
-        public static String Usage()
+        override public String Usage()
         {
             return "-k key value";
         }
-        public String ToString()
+        override public String ToString()
         {
             StringBuilder result = new StringBuilder("");
             while (arguments.Count > 0)

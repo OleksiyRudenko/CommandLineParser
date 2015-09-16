@@ -9,14 +9,16 @@ namespace CommandLineParser
     abstract class Cmd
     {
         protected Queue<String> arguments = new Queue<String>();
-
+        public Cmd()
+        {
+        }
         public Cmd(Queue<String> arguments)
         {
             arguments = this.arguments;
         }
-
-        // abstract void Execute();
-
-        public abstract static String Usage();
+        public virtual String Usage()
+        {
+            return "";
+        }
     }
 }

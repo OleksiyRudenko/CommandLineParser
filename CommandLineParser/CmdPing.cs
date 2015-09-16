@@ -8,11 +8,11 @@ namespace CommandLineParser
 {
     class CmdPing : Cmd
     {
-        public static String Usage()
+        override public String Usage()
         {
             return "-ping";
         }
-        public String ToString()
+        override public String ToString()
         {
             Console.Beep();
             return "Pinging...";
