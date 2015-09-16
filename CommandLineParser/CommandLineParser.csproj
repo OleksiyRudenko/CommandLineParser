@@ -44,6 +44,7 @@
     <Compile Include="Cmd.cs" />
     <Compile Include="CmdD.cs" />
     <Compile Include="CmdK.cs" />
+    <Compile Include="CmdPing.cs" />
     <Compile Include="CommandParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
