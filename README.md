@@ -33,18 +33,18 @@ This class should extend abstract class Cmd and implement two methods:
 2. `ToString()`, which returns String containing arguments processing result.
 
 Example:
-`class CmdFoo : Cmd
-{
-	public static String Usage()
-    {
-        return "-foo argument anotherArgument yetAnother Argument";
-    }
-    public String ToString()
-    {
-        // process arguments, contained in the field arguments of Queue<String> type
-        return (arguments.Count > 0) ? arguments.Dequeue() : ""; // or whatever you want
-    }
-}`
+	class CmdFoo : Cmd
+	{
+		public static String Usage()
+		{
+			return "-foo argument anotherArgument yetAnother Argument";
+		}
+		public String ToString()
+		{
+			// process arguments, contained in the field arguments of Queue<String> type
+			return (arguments.Count > 0) ? arguments.Dequeue() : ""; // or whatever you want
+		}
+	}
 Amend `CommandLineParserTest.bat` as appropriate to test your command.
 
 ## Usage
