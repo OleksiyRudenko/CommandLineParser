@@ -10,7 +10,7 @@ namespace CommandLineParser
     {
         public static String Usage()
         {
-            return "-k key value";
+            return "-d [format]";
         }
         public String ToString()
         {
