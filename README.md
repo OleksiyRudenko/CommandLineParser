@@ -38,7 +38,7 @@ Example:
 ```
     class CmdFoo : Cmd
     {
-        override public String Usage()
+        static public String Usage()
         {
             return "-foo argument anotherArgument yetAnother Argument";
         }
