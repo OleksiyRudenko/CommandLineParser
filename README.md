@@ -11,6 +11,7 @@ Command line arguments:
 * `-print message to print` - prints given message
 * `-ping` - beeps and prints "Pinging..." NB! No actual pinging is effected whatever it might mean except the behaviour described
 * `-d [dateFormat]` - prints current date using given format; default format is yyyy-MM-dd.
+* `-exit` - terminates application immediately.
 
 Use `/?`, `-help` or `/help` command-line argument to get help from the application in console.
 Commands are executed in order of their appearance except for `/?`, `/help` and `-help`, which are ignored once help output occured.
