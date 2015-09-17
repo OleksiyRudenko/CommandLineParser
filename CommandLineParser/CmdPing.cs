@@ -8,7 +8,7 @@ namespace CommandLineParser
 {
     class CmdPing : Cmd
     {
-        override public String Usage()
+        static public String Usage()
         {
             return "-ping";
         }

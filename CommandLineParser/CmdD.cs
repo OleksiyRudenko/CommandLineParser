@@ -8,7 +8,7 @@ namespace CommandLineParser
 {
     class CmdD : Cmd
     {
-        override public String Usage()
+        static public String Usage()
         {
             return "-d [format]";
         }

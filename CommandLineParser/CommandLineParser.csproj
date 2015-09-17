@@ -48,6 +48,7 @@
     <Compile Include="CmdK.cs" />
     <Compile Include="CmdPing.cs" />
     <Compile Include="CmdPrint.cs" />
+    <Compile Include="CommandFactory.cs" />
     <Compile Include="CommandParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

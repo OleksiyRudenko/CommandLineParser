@@ -8,15 +8,16 @@ namespace CommandLineParser
 {
     class CmdHelp : Cmd
     {
-        override public String Usage()
+        static public String Usage()
         {
             return "/?] [/help] [-help";
         }
         override public String ToString()
         {
-            List<String> result = new List<String>();
+            List<String> result = CommandFactory.CmdUsage();
 
-            return System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location) + " "
+            return "Usage: " +
+                System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location) + " ["
                 + String.Join("] [",result)
                 + ']';
         }

@@ -25,9 +25,9 @@ namespace CommandLineParser
         {
             this.arguments = new Queue<String>(arguments);
         }
-        public virtual String Usage()
+        /* public virtual String Usage()
         {
             return "";
-        }
+        } */
     }
 }

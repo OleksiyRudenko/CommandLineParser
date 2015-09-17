@@ -8,7 +8,7 @@ namespace CommandLineParser
 {
     class CmdPrint : Cmd
     {
-        override public String Usage()
+        static public String Usage()
         {
             return "-print <value to print>";
         }
