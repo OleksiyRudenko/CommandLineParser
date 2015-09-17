@@ -18,6 +18,8 @@ namespace CommandLineParser
                 ParseArguments(args);
             // wait for input -- one line per command
             // -exit -- terminates the app
+            Console.WriteLine("User input console. Single line per command with its arguments.");
+            Console.WriteLine("Use /? for help, -exit to terminate the application");
 
 
         }
@@ -68,7 +70,7 @@ namespace CommandLineParser
                     // try executing arbitrary command
                     try
                     {
-                        Cmd commandObject = (Cmd) CreateCmdInstanceFromTextName(command, arguments);
+                        Cmd commandObject = CreateCmdInstanceFromTextName(command, arguments);
                         Console.WriteLine(commandObject);
                     }
                     catch (ArgumentNullException)
@@ -78,17 +80,11 @@ namespace CommandLineParser
                         System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
                         );
                     }
-                    catch (TypeLoadException)
-                    {
-                        Console.WriteLine("Command {0} is not supported, use {1} /? to see set of allowed commands",
-                        command,
-                        System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
-                        );
-                    }
+                    
                     break;
             }
         }
-        private static object CreateCmdInstanceFromTextName(string className, Queue<String> arguments)
+        private static Cmd CreateCmdInstanceFromTextName(string className, Queue<String> arguments)
         {
             if (String.IsNullOrEmpty(className))
                 throw new ArgumentNullException();
@@ -106,7 +102,20 @@ namespace CommandLineParser
             // Activator.CreateInstance(null, "SomeNamespace.SomeClassName").Unwrap();
             // var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             // return Activator.CreateInstance(null, "Cmd" + className, arguments.ToArray());
-            return Activator.CreateInstance(null, "CommandLineParser.Cmd" + className).Unwrap();
+            Cmd obj = null;
+            try
+            {
+                obj = (Cmd) Activator.CreateInstance(null, "CommandLineParser.Cmd" + className).Unwrap();
+                obj.arguments = arguments;
+            }
+            catch (TypeLoadException)
+            {
+                Console.WriteLine("Command {0} is not supported, use {1} /? to see set of allowed commands",
+                className.ToLower(),
+                System.IO.Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location)
+                );
+            }
+            return obj;
         }
 
         /* private static IEnumerable<Type> GetDerivedTypesFor(Type baseType) // Type.GetType("SomeNamespace.SomeClassName")

@@ -8,7 +8,12 @@ namespace CommandLineParser
 {
     abstract class Cmd
     {
-        protected Queue<String> arguments = new Queue<String>();
+        private Queue<String> argumentsQueue = new Queue<String>();
+        public Queue<String> arguments
+        {
+            get { return argumentsQueue; }
+            set { argumentsQueue = value; }
+        }
         public Cmd()
         {
         }
