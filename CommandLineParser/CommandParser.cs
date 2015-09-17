@@ -65,10 +65,10 @@ namespace CommandLineParser
                         );
                     break;
                 default:
-                    // try executing any command
-                    Cmd commandObject = (Cmd) CreateCmdInstanceFromTextName(command,arguments);
+                    // try executing arbitrary command
                     try
                     {
+                        Cmd commandObject = (Cmd) CreateCmdInstanceFromTextName(command, arguments);
                         Console.WriteLine(commandObject);
                     }
                     catch (ArgumentNullException)
@@ -100,7 +100,22 @@ namespace CommandLineParser
                 throw new ArgumentNullException();
             // capitalize first letter
             className = Char.ToUpper(className[0]) + className.Substring(1).ToLower();
-            return Activator.CreateInstance(null,"Cmd"+className,arguments.ToArray());
-        } 
+
+            // Activator.CreateInstance(Type.GetType("SomeNamespace.SomeClassName"));
+            // or
+            // Activator.CreateInstance(null, "SomeNamespace.SomeClassName").Unwrap();
+            // var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            // return Activator.CreateInstance(null, "Cmd" + className, arguments.ToArray());
+            return Activator.CreateInstance(null, "CommandLineParser.Cmd" + className).Unwrap();
+        }
+
+        /* private static IEnumerable<Type> GetDerivedTypesFor(Type baseType) // Type.GetType("SomeNamespace.SomeClassName")
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            return assembly.GetTypes()
+                .Where(baseType.IsAssignableFrom)
+                .Where(t => baseType != t);
+        } */
     }
 }
